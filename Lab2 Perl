@@ -10,4 +10,5 @@ loop (my $i=0; $i <= @sort_ip.elems - 2; $i++) {if @sort_ip[$i] eq @sort_ip[$i+1
 
 my @ip_list = reverse(%ip_list.sort: *.values);
 #say @ip_list[0..9]; #если нужно посмотреть количество вхождений
-loop (my $i=0; $i <= 9; $i++) {say @ip_list[$i].key};
+loop (my $t=0; $t <= 9; $t++) {say @ip_list[$t].key};
+
