@@ -1,0 +1,16 @@
+my $file_1 = slurp "age_file.txt";
+my $file_2 = slurp "tel_file.txt";
+
+my %all_names;
+my %file_1;
+my %file_2;
+
+for $file_1.lines -> $file_1-item {$file_1-item ~~ m/(\w+)(\s+)(\d+)/;%all_names{$0}{'age'} = ($2)};
+for $file_2.lines -> $file_2-item {$file_2-item ~~ m/(\w+)(\s+)(\d ** { 3 }\-\d ** { 2 }\-\d ** { 2 })/;%all_names{$0}{'tel'} = ($2)};
+
+my $new_file=("Name Age Phone \n");
+
+for %all_names.keys.sort -> $item { my $tel ='',my$age='';
+                                    if %all_names{$item}{'tel'}.WHAT.^name eq 'Any' {$tel = '-'} else { $tel = %all_names{$item}{'tel'}};
+                                    if %all_names{$item}{'age'}.WHAT.^name eq 'Any' {$age = '-'} else {$age = %all_names{$item}{'age'}}; $new_file ~= ("$item $age $tel \n")}
+spurt "new_file.txt", $new_file;
